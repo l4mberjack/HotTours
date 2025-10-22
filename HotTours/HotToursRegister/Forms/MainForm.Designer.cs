@@ -49,7 +49,7 @@
             statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelToursCount, toolStripStatusLabelSumOfTours, toolStripStatusLabelToursWithExtraCharge, toolStripStatusLabelSumOfExtraCharge });
             statusStrip.Location = new Point(0, 424);
             statusStrip.Name = "statusStrip";
-            statusStrip.Size = new Size(800, 26);
+            statusStrip.Size = new Size(1043, 26);
             statusStrip.TabIndex = 0;
             statusStrip.Text = "statusStrip1";
             // 
@@ -83,7 +83,7 @@
             menuStrip.Items.AddRange(new ToolStripItem[] { AddToolStripMenuItem, DeleteToolStripMenuItem, EditToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
-            menuStrip.Size = new Size(800, 28);
+            menuStrip.Size = new Size(1043, 28);
             menuStrip.TabIndex = 1;
             menuStrip.Text = "menuStrip1";
             // 
@@ -98,6 +98,7 @@
             DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
             DeleteToolStripMenuItem.Size = new Size(79, 24);
             DeleteToolStripMenuItem.Text = "Удалить";
+            DeleteToolStripMenuItem.Click += DeleteToolStripMenuItem_Click;
             // 
             // EditToolStripMenuItem
             // 
@@ -118,19 +119,20 @@
             mainGrid.Name = "mainGrid";
             mainGrid.ReadOnly = true;
             mainGrid.RowHeadersWidth = 51;
-            mainGrid.Size = new Size(800, 396);
+            mainGrid.Size = new Size(1043, 396);
             mainGrid.TabIndex = 2;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1043, 450);
             Controls.Add(mainGrid);
             Controls.Add(statusStrip);
             Controls.Add(menuStrip);
             Name = "MainForm";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Главная форма";
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
             menuStrip.ResumeLayout(false);
