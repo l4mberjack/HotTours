@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using HotToursRegister.Forms;
 using HotToursRegister.Models;
 
 namespace HotToursRegister
@@ -66,10 +67,6 @@ namespace HotToursRegister
             tourList.Add(new Tour(Direction.Sushari, new DateTime(2025, 10, 1), 3, 999m, 5, false, 0m));
         }
 
-        private void ButtonAdd_Click(object sender, EventArgs e)
-        {
-        }
-
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (mainGrid.SelectedRows.Count == 0)
@@ -91,6 +88,12 @@ namespace HotToursRegister
                 tourList.Remove(selectedTour);
                 SetStatistics();
             }
+        }
+
+        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var AddOrEditForm = new EditOrAddForm();
+            AddOrEditForm.ShowDialog();
         }
     }
 }

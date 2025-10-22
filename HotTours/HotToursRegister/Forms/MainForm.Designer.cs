@@ -92,6 +92,7 @@
             AddToolStripMenuItem.Name = "AddToolStripMenuItem";
             AddToolStripMenuItem.Size = new Size(90, 24);
             AddToolStripMenuItem.Text = "Добавить";
+            AddToolStripMenuItem.Click += AddToolStripMenuItem_Click;
             // 
             // DeleteToolStripMenuItem
             // 

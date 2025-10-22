@@ -31,10 +31,9 @@
             comboBoxDirections = new ComboBox();
             labelDirections = new Label();
             labelDate = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimePicker = new DateTimePicker();
             labelNightsCount = new Label();
             numericUpDownNights = new NumericUpDown();
-            pictureBox1 = new PictureBox();
             numericUpDownTourists = new NumericUpDown();
             labelTouristsCount = new Label();
             checkBoxWiFi = new CheckBox();
@@ -44,11 +43,12 @@
             numericUpDownPrice = new NumericUpDown();
             labelExtraCharge = new Label();
             numericUpDownExtraCharge = new NumericUpDown();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNights).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTourists).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownExtraCharge).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // comboBoxDirections
@@ -77,12 +77,12 @@
             labelDate.TabIndex = 3;
             labelDate.Text = "Дата вылета";
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            dateTimePicker1.Location = new Point(164, 289);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(269, 27);
-            dateTimePicker1.TabIndex = 4;
+            dateTimePicker.Location = new Point(164, 289);
+            dateTimePicker.Name = "dateTimePicker";
+            dateTimePicker.Size = new Size(269, 27);
+            dateTimePicker.TabIndex = 4;
             // 
             // labelNightsCount
             // 
@@ -99,16 +99,6 @@
             numericUpDownNights.Name = "numericUpDownNights";
             numericUpDownNights.Size = new Size(269, 27);
             numericUpDownNights.TabIndex = 6;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.banner;
-            pictureBox1.Location = new Point(0, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(488, 178);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
             // 
             // numericUpDownTourists
             // 
@@ -186,11 +176,22 @@
             numericUpDownExtraCharge.Size = new Size(223, 27);
             numericUpDownExtraCharge.TabIndex = 16;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.banner1;
+            pictureBox2.Location = new Point(1, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(484, 214);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 17;
+            pictureBox2.TabStop = false;
+            // 
             // EditOrAddForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(486, 686);
+            Controls.Add(pictureBox2);
             Controls.Add(numericUpDownExtraCharge);
             Controls.Add(labelExtraCharge);
             Controls.Add(numericUpDownPrice);
@@ -200,10 +201,9 @@
             Controls.Add(checkBoxWiFi);
             Controls.Add(numericUpDownTourists);
             Controls.Add(labelTouristsCount);
-            Controls.Add(pictureBox1);
             Controls.Add(numericUpDownNights);
             Controls.Add(labelNightsCount);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dateTimePicker);
             Controls.Add(labelDate);
             Controls.Add(labelDirections);
             Controls.Add(comboBoxDirections);
@@ -211,10 +211,10 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "EditOrAddForm";
             ((System.ComponentModel.ISupportInitialize)numericUpDownNights).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTourists).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownExtraCharge).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -224,10 +224,9 @@
         private ComboBox comboBoxDirections;
         private Label labelDirections;
         private Label labelDate;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker;
         private Label labelNightsCount;
         private NumericUpDown numericUpDownNights;
-        private PictureBox pictureBox1;
         private NumericUpDown numericUpDownTourists;
         private Label labelTouristsCount;
         private CheckBox checkBoxWiFi;
@@ -237,5 +236,7 @@
         private NumericUpDown numericUpDownPrice;
         private Label labelExtraCharge;
         private NumericUpDown numericUpDownExtraCharge;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

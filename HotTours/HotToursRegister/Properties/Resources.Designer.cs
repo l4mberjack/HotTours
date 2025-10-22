@@ -63,9 +63,9 @@ namespace HotToursRegister.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap banner {
+        internal static System.Drawing.Bitmap banner1 {
             get {
-                object obj = ResourceManager.GetObject("banner", resourceCulture);
+                object obj = ResourceManager.GetObject("banner1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
