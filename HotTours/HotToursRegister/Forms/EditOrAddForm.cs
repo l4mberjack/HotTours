@@ -69,6 +69,13 @@ namespace HotToursRegister.Forms
             numericUpDownPrice.Maximum = 5_000_000m;
             numericUpDownExtraCharge.Maximum = 500_00m;
 
+            // Кол-во знаков после запятой
+            numericUpDownPrice.DecimalPlaces = 2;
+            numericUpDownExtraCharge.DecimalPlaces = 2;
+
+            numericUpDownExtraCharge.Increment = 1000;
+            numericUpDownPrice.Increment = 1000;
+
             // Число туристов и ночей
             numericUpDownTourists.Maximum = 10;
             numericUpDownNights.Maximum = 45;
@@ -81,10 +88,10 @@ namespace HotToursRegister.Forms
 
             dateTimePicker.DataBindings.Add("Value", targetTour, nameof(Tour.DepartureDate));
             numericUpDownNights.DataBindings.Add("Value", targetTour, nameof(Tour.NightsCount));
-            numericUpDownPrice.DataBindings.Add("Text", targetTour, nameof(Tour.PricePerPerson));
+            numericUpDownPrice.DataBindings.Add("Value", targetTour, nameof(Tour.PricePerPerson));
             numericUpDownTourists.DataBindings.Add("Value", targetTour, nameof(Tour.TouristCount));
             checkBoxWiFi.DataBindings.Add("Checked", targetTour, nameof(Tour.HasWifi));
-            numericUpDownExtraCharge.DataBindings.Add("Text", targetTour, nameof(Tour.ExtraCharges));
+            numericUpDownExtraCharge.DataBindings.Add("Value", targetTour, nameof(Tour.ExtraCharges));
         }
 
         private bool ValidateForm()
