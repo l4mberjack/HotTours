@@ -87,11 +87,67 @@ namespace HotToursRegister.Forms
             numericUpDownExtraCharge.DataBindings.Add("Text", targetTour, nameof(Tour.ExtraCharges));
         }
 
+        private bool ValidateForm()
+        {
+            bool isValid = true;
+            errorProvider.Clear();
+
+            if (targetTour.Direction == Direction.Uknown)
+            {
+                errorProvider.SetError(comboBoxDirections, "Выберите направление тура!");
+                isValid = false;
+            }
+
+            if (targetTour.DepartureDate < DateTime.Today)
+            {
+                errorProvider.SetError(dateTimePicker, "Дата не может быть прошедшей!");
+                isValid = false;
+            }
+
+            if (targetTour.NightsCount < 2)
+            {
+                errorProvider.SetError(numericUpDownNights, "Количество ночей должно быть больше 2!");
+                isValid = false;
+            }
+
+            if (targetTour.PricePerPerson < 5000m)
+            {
+                errorProvider.SetError(numericUpDownPrice, "Цена за отдыхающего должна быть больше 5000 рубчиков!");
+                isValid = false;
+            }
+
+            if (targetTour.TouristCount < 1)
+            {
+                errorProvider.SetError(numericUpDownTourists, "Количество туристов должно быть не менее 1!");
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
         private void buttonAddOrEdit_Click(object sender, EventArgs e)
         {
+            if (!ValidateForm())
+            {
+                return;
+            }
+
             targetTour.TotalCost = targetTour.CalculateTotalCost();
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            var dialogRes = MessageBox.Show("Вы уверены что хотите выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogRes == DialogResult.Yes)
+            {
+                Close();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

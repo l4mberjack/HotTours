@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             comboBoxDirections = new ComboBox();
             labelDirections = new Label();
             labelDate = new Label();
@@ -44,11 +45,13 @@
             labelExtraCharge = new Label();
             numericUpDownExtraCharge = new NumericUpDown();
             pictureBox2 = new PictureBox();
+            errorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)numericUpDownNights).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTourists).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownExtraCharge).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // comboBoxDirections
@@ -155,6 +158,7 @@
             buttonCancel.TabIndex = 12;
             buttonCancel.Text = "Отмена";
             buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // labelPricePerPerson
             // 
@@ -203,6 +207,11 @@
             pictureBox2.TabIndex = 17;
             pictureBox2.TabStop = false;
             // 
+            // errorProvider
+            // 
+            errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider.ContainerControl = this;
+            // 
             // EditOrAddForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -234,6 +243,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownExtraCharge).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -257,5 +267,6 @@
         private NumericUpDown numericUpDownExtraCharge;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private ErrorProvider errorProvider;
     }
 }
