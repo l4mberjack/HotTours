@@ -6,6 +6,7 @@ namespace HotToursRegister.Models
     /// </summary>
     public enum Direction
     {
+        Uknown,
         Turkey,
         Spain,
         Italy,

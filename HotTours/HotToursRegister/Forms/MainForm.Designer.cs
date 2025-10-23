@@ -106,6 +106,7 @@
             EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             EditToolStripMenuItem.Size = new Size(125, 24);
             EditToolStripMenuItem.Text = "Редактировать";
+            EditToolStripMenuItem.Click += EditToolStripMenuItem_Click;
             // 
             // mainGrid
             // 

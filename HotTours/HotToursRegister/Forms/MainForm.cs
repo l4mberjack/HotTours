@@ -71,6 +71,7 @@ namespace HotToursRegister
         {
             if (mainGrid.SelectedRows.Count == 0)
             {
+                MessageBox.Show("Выберите тур для удаления!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -93,7 +94,38 @@ namespace HotToursRegister
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var AddOrEditForm = new EditOrAddForm();
-            AddOrEditForm.ShowDialog();
+
+            if (AddOrEditForm.ShowDialog(this) == DialogResult.OK)
+            {
+                tourList.Add(AddOrEditForm.CurrentTour);
+
+                SetStatistics();
+            }
+        }
+
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (mainGrid.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите тур для редактирования.", "Редактирование", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var selectedTour = (Tour)mainGrid.SelectedRows[0].DataBoundItem;
+
+            var editForm = new EditOrAddForm(selectedTour);
+
+            if (editForm.ShowDialog(this) == DialogResult.OK)
+            {
+                var index = tourList.IndexOf(selectedTour);
+
+                if (index >= 0)
+                {
+                    tourList[index] = editForm.CurrentTour;
+
+                    SetStatistics();
+                }
+            }
         }
     }
 }

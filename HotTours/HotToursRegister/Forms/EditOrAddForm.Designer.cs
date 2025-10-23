@@ -53,6 +53,7 @@
             // 
             // comboBoxDirections
             // 
+            comboBoxDirections.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             comboBoxDirections.FormattingEnabled = true;
             comboBoxDirections.Location = new Point(164, 242);
             comboBoxDirections.Name = "comboBoxDirections";
@@ -61,6 +62,7 @@
             // 
             // labelDirections
             // 
+            labelDirections.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelDirections.AutoSize = true;
             labelDirections.Location = new Point(44, 245);
             labelDirections.Name = "labelDirections";
@@ -70,6 +72,7 @@
             // 
             // labelDate
             // 
+            labelDate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelDate.AutoSize = true;
             labelDate.Location = new Point(54, 294);
             labelDate.Name = "labelDate";
@@ -79,6 +82,7 @@
             // 
             // dateTimePicker
             // 
+            dateTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dateTimePicker.Location = new Point(164, 289);
             dateTimePicker.Name = "dateTimePicker";
             dateTimePicker.Size = new Size(269, 27);
@@ -86,6 +90,7 @@
             // 
             // labelNightsCount
             // 
+            labelNightsCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelNightsCount.AutoSize = true;
             labelNightsCount.Location = new Point(21, 340);
             labelNightsCount.Name = "labelNightsCount";
@@ -95,6 +100,7 @@
             // 
             // numericUpDownNights
             // 
+            numericUpDownNights.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownNights.Location = new Point(164, 338);
             numericUpDownNights.Name = "numericUpDownNights";
             numericUpDownNights.Size = new Size(269, 27);
@@ -102,6 +108,7 @@
             // 
             // numericUpDownTourists
             // 
+            numericUpDownTourists.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownTourists.Location = new Point(210, 381);
             numericUpDownTourists.Name = "numericUpDownTourists";
             numericUpDownTourists.Size = new Size(223, 27);
@@ -109,6 +116,7 @@
             // 
             // labelTouristsCount
             // 
+            labelTouristsCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelTouristsCount.AutoSize = true;
             labelTouristsCount.Location = new Point(21, 383);
             labelTouristsCount.Name = "labelTouristsCount";
@@ -118,6 +126,7 @@
             // 
             // checkBoxWiFi
             // 
+            checkBoxWiFi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             checkBoxWiFi.AutoSize = true;
             checkBoxWiFi.Location = new Point(210, 508);
             checkBoxWiFi.Name = "checkBoxWiFi";
@@ -128,15 +137,18 @@
             // 
             // buttonAddOrEdit
             // 
+            buttonAddOrEdit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             buttonAddOrEdit.Location = new Point(65, 599);
             buttonAddOrEdit.Name = "buttonAddOrEdit";
             buttonAddOrEdit.Size = new Size(157, 46);
             buttonAddOrEdit.TabIndex = 11;
             buttonAddOrEdit.Text = "buttonAddOrEdit";
             buttonAddOrEdit.UseVisualStyleBackColor = true;
+            buttonAddOrEdit.Click += buttonAddOrEdit_Click;
             // 
             // buttonCancel
             // 
+            buttonCancel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             buttonCancel.Location = new Point(276, 599);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(157, 46);
@@ -146,6 +158,7 @@
             // 
             // labelPricePerPerson
             // 
+            labelPricePerPerson.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelPricePerPerson.AutoSize = true;
             labelPricePerPerson.Location = new Point(28, 425);
             labelPricePerPerson.Name = "labelPricePerPerson";
@@ -155,6 +168,7 @@
             // 
             // numericUpDownPrice
             // 
+            numericUpDownPrice.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownPrice.Location = new Point(210, 423);
             numericUpDownPrice.Name = "numericUpDownPrice";
             numericUpDownPrice.Size = new Size(223, 27);
@@ -162,6 +176,7 @@
             // 
             // labelExtraCharge
             // 
+            labelExtraCharge.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelExtraCharge.AutoSize = true;
             labelExtraCharge.Location = new Point(137, 465);
             labelExtraCharge.Name = "labelExtraCharge";
@@ -171,6 +186,7 @@
             // 
             // numericUpDownExtraCharge
             // 
+            numericUpDownExtraCharge.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             numericUpDownExtraCharge.Location = new Point(210, 463);
             numericUpDownExtraCharge.Name = "numericUpDownExtraCharge";
             numericUpDownExtraCharge.Size = new Size(223, 27);
@@ -178,6 +194,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox2.Image = Properties.Resources.banner1;
             pictureBox2.Location = new Point(1, 0);
             pictureBox2.Name = "pictureBox2";
@@ -207,6 +224,8 @@
             Controls.Add(labelDate);
             Controls.Add(labelDirections);
             Controls.Add(comboBoxDirections);
+            MaximumSize = new Size(504, 733);
+            MinimumSize = new Size(504, 733);
             Name = "EditOrAddForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "EditOrAddForm";
