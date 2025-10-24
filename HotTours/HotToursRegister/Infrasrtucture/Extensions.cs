@@ -117,25 +117,6 @@ namespace dataGridView.App.Infrostructure
 
             throw new ArgumentException("Expression is not a property", nameof(expression));
         }
-
-        [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-        public class NotUnknownDirectionAttribute : ValidationAttribute
-        {
-            public override bool IsValid(object? value)
-            {
-                if (value is Direction dir)
-                {
-                    return dir != Direction.Uknown;
-                }
-                return false;
-            }
-
-            public override string FormatErrorMessage(string name)
-            {
-                return "Выберите направление тура!";
-            }
-
-        }
     }
 }
 

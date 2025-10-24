@@ -200,7 +200,7 @@
             // 
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox2.Image = Properties.Resources.banner1;
-            pictureBox2.Location = new Point(1, 0);
+            pictureBox2.Location = new Point(0, -2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(484, 214);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -265,7 +265,6 @@
         private NumericUpDown numericUpDownPrice;
         private Label labelExtraCharge;
         private NumericUpDown numericUpDownExtraCharge;
-        private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private ErrorProvider errorProvider;
     }

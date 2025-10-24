@@ -41,7 +41,6 @@ namespace HotToursRegister
         {
             mainGrid.AutoGenerateColumns = false;
 
-            //mainGrid.Columns[nameof(Tour.Id)].DataPropertyName = nameof(Tour.Id);
             ColumnDirection.DataPropertyName = nameof(Tour.Direction);
             ColumnDepartureDate.DataPropertyName = nameof(Tour.DepartureDate);
             ColumnCountNights.DataPropertyName = nameof(Tour.NightsCount);

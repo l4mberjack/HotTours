@@ -18,7 +18,7 @@ namespace HotToursRegister.Models
         /// <summary>
         /// Направление тура
         /// </summary>
-        [NotUnknownDirection]
+        [DeniedValues(Direction.Uknown)]
         [EnumDataType(typeof(Direction))]
         public Direction Direction { get; set; }
 
