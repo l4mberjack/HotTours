@@ -1,4 +1,6 @@
-﻿using HotToursRegister.Constants;
+﻿using System.ComponentModel.DataAnnotations;
+using dataGridView.App.Infrostructure;
+using HotToursRegister.Constants;
 using HotToursRegister.Models;
 
 namespace HotToursRegister.Forms
@@ -70,30 +72,62 @@ namespace HotToursRegister.Forms
         private void BindControls()
         {
             comboBoxDirections.DataSource = Enum.GetValues(typeof(Direction));
-            comboBoxDirections.DataBindings.Add("SelectedItem", targetTour, nameof(Tour.Direction));
+            comboBoxDirections.AddBinding(x => x.SelectedItem!, targetTour, x => x.Direction, errorProvider);
 
-            dateTimePicker.DataBindings.Add("Value", targetTour, nameof(Tour.DepartureDate));
-            numericUpDownNights.DataBindings.Add("Value", targetTour, nameof(Tour.NightsCount));
-            numericUpDownPrice.DataBindings.Add("Value", targetTour, nameof(Tour.PricePerPerson));
-            numericUpDownTourists.DataBindings.Add("Value", targetTour, nameof(Tour.TouristCount));
-            checkBoxWiFi.DataBindings.Add("Checked", targetTour, nameof(Tour.HasWifi));
-            numericUpDownExtraCharge.DataBindings.Add("Value", targetTour, nameof(Tour.ExtraCharges));
+            dateTimePicker.AddBinding(x => x.Value, targetTour, x => x.DepartureDate, errorProvider);
+            numericUpDownNights.AddBinding(x => x.Value, targetTour, x => x.NightsCount, errorProvider);
+            numericUpDownPrice.AddBinding(x => x.Value, targetTour, x => x.PricePerPerson, errorProvider);
+            numericUpDownTourists.AddBinding(x => x.Value, targetTour, x => x.TouristCount, errorProvider);
+            checkBoxWiFi.AddBinding(x => x.Checked, targetTour, x => x.HasWifi);
+            numericUpDownExtraCharge.AddBinding(x => x.Value, targetTour, x => x.ExtraCharges, errorProvider);
         }
 
-        private bool ValidateForm()
-        {
-            return true;
-        }
 
         private void buttonAddOrEdit_Click(object sender, EventArgs e)
         {
-            if (!ValidateForm())
+
+            errorProvider.Clear();
+
+            var context = new ValidationContext(targetTour);
+            var results = new List<ValidationResult>();
+
+            bool isValid = Validator.TryValidateObject(targetTour, context, results, true);
+
+            if (isValid)
             {
+                DialogResult = DialogResult.OK;
+                Close();
                 return;
             }
 
-            DialogResult = DialogResult.OK;
-            Close();
+            // Пробегаемся по ошибкам и отображаем их на нужных контролах
+            foreach (var validationResult in results)
+            {
+                foreach (var memberName in validationResult.MemberNames)
+                {
+                    Control? control = memberName switch
+                    {
+                        nameof(Tour.Direction) => comboBoxDirections,
+                        nameof(Tour.DepartureDate) => dateTimePicker,
+                        nameof(Tour.NightsCount) => numericUpDownNights,
+                        nameof(Tour.PricePerPerson) => numericUpDownPrice,
+                        nameof(Tour.TouristCount) => numericUpDownTourists,
+                        nameof(Tour.ExtraCharges) => numericUpDownExtraCharge,
+                        _ => null
+                    };
+
+                    if (control != null)
+                    {
+                        errorProvider.SetError(control, validationResult.ErrorMessage);
+                    }
+                }
+            }
+
+            MessageBox.Show(
+                "Пожалуйста, исправьте ошибки в форме перед сохранением.",
+                "Ошибки валидации",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

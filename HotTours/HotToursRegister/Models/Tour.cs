@@ -1,6 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 using HotToursRegister.Constants;
+using static dataGridView.App.Infrostructure.Extensions;
 
 namespace HotToursRegister.Models
 {
@@ -17,8 +18,8 @@ namespace HotToursRegister.Models
         /// <summary>
         /// Направление тура
         /// </summary>
-        /// [Required(ErrorMessage = "Выберите направление тура!")]
-        [EnumDataType(typeof(Direction), ErrorMessage = "Некорректное направление тура!")]
+        [NotUnknownDirection]
+        [EnumDataType(typeof(Direction))]
         public Direction Direction { get; set; }
 
         /// <summary>
