@@ -1,11 +1,12 @@
-﻿using HotToursRegister.Models;
+﻿using HotToursRegister.Constants;
+using HotToursRegister.Models;
 
 namespace HotToursRegister.Forms
 {
     public partial class EditOrAddForm : Form
     {
         /// <summary>
-        /// Таргетный тур в классе
+        ///  Текущий тур
         /// </summary>
         private readonly Tour targetTour;
 
@@ -23,34 +24,24 @@ namespace HotToursRegister.Forms
 
             if (sourceTour == null)
             {
-                targetTour = new Tour(
-                    direction: Direction.Uknown,
-                    departureDate: DateTime.Now,
-                    nightsCount: 0,
-                    pricePerPerson: 0m,
-                    touristCount: 0,
-                    hasWifi: false,
-                    extraCharges: 0m
-                );
+                targetTour = new Tour
+                {
+                    Id = Guid.NewGuid(),
+                    Direction = Direction.Uknown,
+                    DepartureDate = DateTime.Now,
+                    NightsCount = 0,
+                    PricePerPerson = 0m,
+                    TouristCount = 0,
+                    HasWifi = false,
+                    ExtraCharges = 0m
+                };
 
                 Text = "Добавление тура";
                 buttonAddOrEdit.Text = "Добавить";
             }
             else
             {
-                targetTour = new Tour(
-                    direction: sourceTour.Direction,
-                    departureDate: sourceTour.DepartureDate,
-                    nightsCount: sourceTour.NightsCount,
-                    pricePerPerson: sourceTour.PricePerPerson,
-                    touristCount: sourceTour.TouristCount,
-                    hasWifi: sourceTour.HasWifi,
-                    extraCharges: sourceTour.ExtraCharges
-                )
-                {
-                    Id = sourceTour.Id,
-                    TotalCost = sourceTour.TotalCost
-                };
+                targetTour = sourceTour.Clone();
 
                 Text = "Редактирование тура";
                 buttonAddOrEdit.Text = "Сохранить";
@@ -65,20 +56,15 @@ namespace HotToursRegister.Forms
         /// </summary>
         private void SetUpFields()
         {
-            // Максимальные цены и доплаты за тур
-            numericUpDownPrice.Maximum = 5_000_000m;
-            numericUpDownExtraCharge.Maximum = 500_00m;
-
-            // Кол-во знаков после запятой
-            numericUpDownPrice.DecimalPlaces = 2;
-            numericUpDownExtraCharge.DecimalPlaces = 2;
-
-            numericUpDownExtraCharge.Increment = 1000;
+            numericUpDownPrice.Maximum = TourLimits.MaxPricePerPerson;
             numericUpDownPrice.Increment = 1000;
+            numericUpDownExtraCharge.Maximum = TourLimits.MaxExtraCharges;
+            numericUpDownExtraCharge.Increment = 1000;
 
-            // Число туристов и ночей
-            numericUpDownTourists.Maximum = 10;
-            numericUpDownNights.Maximum = 45;
+            numericUpDownTourists.Maximum = TourLimits.MaxTourists;
+            numericUpDownNights.Maximum = TourLimits.MaxNights;
+
+            comboBoxDirections.DataSource = Enum.GetValues(typeof(Direction));
         }
 
         private void BindControls()
@@ -96,40 +82,7 @@ namespace HotToursRegister.Forms
 
         private bool ValidateForm()
         {
-            bool isValid = true;
-            errorProvider.Clear();
-
-            if (targetTour.Direction == Direction.Uknown)
-            {
-                errorProvider.SetError(comboBoxDirections, "Выберите направление тура!");
-                isValid = false;
-            }
-
-            if (targetTour.DepartureDate < DateTime.Today)
-            {
-                errorProvider.SetError(dateTimePicker, "Дата не может быть прошедшей!");
-                isValid = false;
-            }
-
-            if (targetTour.NightsCount < 2)
-            {
-                errorProvider.SetError(numericUpDownNights, "Количество ночей должно быть больше 2!");
-                isValid = false;
-            }
-
-            if (targetTour.PricePerPerson < 5000m)
-            {
-                errorProvider.SetError(numericUpDownPrice, "Цена за отдыхающего должна быть больше 5000 рубчиков!");
-                isValid = false;
-            }
-
-            if (targetTour.TouristCount < 1)
-            {
-                errorProvider.SetError(numericUpDownTourists, "Количество туристов должно быть не менее 1!");
-                isValid = false;
-            }
-
-            return isValid;
+            return true;
         }
 
         private void buttonAddOrEdit_Click(object sender, EventArgs e)
@@ -139,7 +92,6 @@ namespace HotToursRegister.Forms
                 return;
             }
 
-            targetTour.TotalCost = targetTour.CalculateTotalCost();
             DialogResult = DialogResult.OK;
             Close();
         }

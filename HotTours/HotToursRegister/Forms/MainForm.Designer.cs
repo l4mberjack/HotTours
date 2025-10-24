@@ -38,6 +38,14 @@
             DeleteToolStripMenuItem = new ToolStripMenuItem();
             EditToolStripMenuItem = new ToolStripMenuItem();
             mainGrid = new DataGridView();
+            ColumnDirection = new DataGridViewComboBoxColumn();
+            ColumnDepartureDate = new DataGridViewTextBoxColumn();
+            ColumnCountNights = new DataGridViewTextBoxColumn();
+            ColumnTouristsCount = new DataGridViewTextBoxColumn();
+            ColumnPricePerPerson = new DataGridViewTextBoxColumn();
+            ColumnExtraCharges = new DataGridViewTextBoxColumn();
+            ColumnWiFi = new DataGridViewCheckBoxColumn();
+            ColumnTotalCost = new DataGridViewTextBoxColumn();
             statusStrip.SuspendLayout();
             menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainGrid).BeginInit();
@@ -116,6 +124,7 @@
             mainGrid.AllowUserToResizeRows = false;
             mainGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             mainGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            mainGrid.Columns.AddRange(new DataGridViewColumn[] { ColumnDirection, ColumnDepartureDate, ColumnCountNights, ColumnTouristsCount, ColumnPricePerPerson, ColumnExtraCharges, ColumnWiFi, ColumnTotalCost });
             mainGrid.Dock = DockStyle.Fill;
             mainGrid.Location = new Point(0, 28);
             mainGrid.Name = "mainGrid";
@@ -123,6 +132,66 @@
             mainGrid.RowHeadersWidth = 51;
             mainGrid.Size = new Size(1043, 396);
             mainGrid.TabIndex = 2;
+            // 
+            // ColumnDirection
+            // 
+            ColumnDirection.HeaderText = "Направление";
+            ColumnDirection.MinimumWidth = 6;
+            ColumnDirection.Name = "ColumnDirection";
+            ColumnDirection.ReadOnly = true;
+            // 
+            // ColumnDepartureDate
+            // 
+            ColumnDepartureDate.HeaderText = "Дата";
+            ColumnDepartureDate.MinimumWidth = 6;
+            ColumnDepartureDate.Name = "ColumnDepartureDate";
+            ColumnDepartureDate.ReadOnly = true;
+            // 
+            // ColumnCountNights
+            // 
+            ColumnCountNights.HeaderText = "Количество ночей";
+            ColumnCountNights.MinimumWidth = 6;
+            ColumnCountNights.Name = "ColumnCountNights";
+            ColumnCountNights.ReadOnly = true;
+            // 
+            // ColumnTouristsCount
+            // 
+            ColumnTouristsCount.HeaderText = "Количество туристов";
+            ColumnTouristsCount.MinimumWidth = 6;
+            ColumnTouristsCount.Name = "ColumnTouristsCount";
+            ColumnTouristsCount.ReadOnly = true;
+            // 
+            // ColumnPricePerPerson
+            // 
+            ColumnPricePerPerson.HeaderText = "Цена за отдыхающего";
+            ColumnPricePerPerson.MinimumWidth = 6;
+            ColumnPricePerPerson.Name = "ColumnPricePerPerson";
+            ColumnPricePerPerson.ReadOnly = true;
+            ColumnPricePerPerson.Resizable = DataGridViewTriState.True;
+            ColumnPricePerPerson.SortMode = DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnExtraCharges
+            // 
+            ColumnExtraCharges.HeaderText = "Доплата";
+            ColumnExtraCharges.MinimumWidth = 6;
+            ColumnExtraCharges.Name = "ColumnExtraCharges";
+            ColumnExtraCharges.ReadOnly = true;
+            // 
+            // ColumnWiFi
+            // 
+            ColumnWiFi.HeaderText = "Наличие Wi-Fi";
+            ColumnWiFi.MinimumWidth = 6;
+            ColumnWiFi.Name = "ColumnWiFi";
+            ColumnWiFi.ReadOnly = true;
+            // 
+            // ColumnTotalCost
+            // 
+            ColumnTotalCost.HeaderText = "Общая стоимость тура";
+            ColumnTotalCost.MinimumWidth = 6;
+            ColumnTotalCost.Name = "ColumnTotalCost";
+            ColumnTotalCost.ReadOnly = true;
+            ColumnTotalCost.Resizable = DataGridViewTriState.True;
+            ColumnTotalCost.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // MainForm
             // 
@@ -156,5 +225,13 @@
         private ToolStripStatusLabel toolStripStatusLabelToursWithExtraCharge;
         private ToolStripStatusLabel toolStripStatusLabelSumOfExtraCharge;
         private DataGridView mainGrid;
+        private DataGridViewComboBoxColumn ColumnDirection;
+        private DataGridViewTextBoxColumn ColumnDepartureDate;
+        private DataGridViewTextBoxColumn ColumnCountNights;
+        private DataGridViewTextBoxColumn ColumnTouristsCount;
+        private DataGridViewTextBoxColumn ColumnPricePerPerson;
+        private DataGridViewTextBoxColumn ColumnExtraCharges;
+        private DataGridViewCheckBoxColumn ColumnWiFi;
+        private DataGridViewTextBoxColumn ColumnTotalCost;
     }
 }

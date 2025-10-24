@@ -39,20 +39,22 @@ namespace HotToursRegister
         /// </summary>
         private void SetupDataGrid()
         {
+            mainGrid.AutoGenerateColumns = false;
+
+            //mainGrid.Columns[nameof(Tour.Id)].DataPropertyName = nameof(Tour.Id);
+            ColumnDirection.DataPropertyName = nameof(Tour.Direction);
+            ColumnDepartureDate.DataPropertyName = nameof(Tour.DepartureDate);
+            ColumnCountNights.DataPropertyName = nameof(Tour.NightsCount);
+            ColumnPricePerPerson.DataPropertyName = nameof(Tour.PricePerPerson);
+            ColumnTouristsCount.DataPropertyName = nameof(Tour.TouristCount);
+            ColumnWiFi.DataPropertyName = nameof(Tour.HasWifi);
+            ColumnExtraCharges.DataPropertyName = nameof(Tour.ExtraCharges);
+            ColumnTotalCost.DataPropertyName = nameof(Tour.TotalCost);
+
+            ColumnDirection.DataSource = Enum.GetValues(typeof(Direction));
+
             toursBinding.DataSource = tourList;
             mainGrid.DataSource = toursBinding;
-
-            // Настройка заголовков
-            mainGrid.Columns[nameof(Tour.Id)].Visible = false;
-
-            mainGrid.Columns[nameof(Tour.Direction)].HeaderText = "Направление";
-            mainGrid.Columns[nameof(Tour.DepartureDate)].HeaderText = "Дата вылета";
-            mainGrid.Columns[nameof(Tour.NightsCount)].HeaderText = "Ночей";
-            mainGrid.Columns[nameof(Tour.PricePerPerson)].HeaderText = "Цена за отдыхающего (₽уб)";
-            mainGrid.Columns[nameof(Tour.TouristCount)].HeaderText = "Количество отдыхающих";
-            mainGrid.Columns[nameof(Tour.HasWifi)].HeaderText = "Wi-Fi";
-            mainGrid.Columns[nameof(Tour.ExtraCharges)].HeaderText = "Доплаты (₽уб)";
-            mainGrid.Columns[nameof(Tour.TotalCost)].HeaderText = "Общая стоимость (₽уб)";
         }
 
         /// <summary>
@@ -60,12 +62,13 @@ namespace HotToursRegister
         /// </summary>
         private void LoadTours()
         {
-            tourList.Add(new Tour(Direction.Turkey, new DateTime(2025, 6, 10), 7, 55000m, 2, true, 5000m));
-            tourList.Add(new Tour(Direction.Spain, new DateTime(2025, 7, 5), 10, 72000m, 3, true, 8000m));
-            tourList.Add(new Tour(Direction.Italy, new DateTime(2025, 8, 12), 5, 48000m, 1, false, 2000m));
-            tourList.Add(new Tour(Direction.France, new DateTime(2025, 9, 3), 12, 95000m, 4, true, 10000m));
-            tourList.Add(new Tour(Direction.Sushari, new DateTime(2025, 10, 1), 3, 999m, 5, false, 0m));
+            tourList.Add(new Tour { Direction = Direction.Turkey, DepartureDate = new DateTime(2025, 6, 10), NightsCount = 7, PricePerPerson = 55000m, TouristCount = 2, HasWifi = true, ExtraCharges = 5000m });
+            tourList.Add(new Tour { Direction = Direction.Spain, DepartureDate = new DateTime(2025, 7, 5), NightsCount = 10, PricePerPerson = 72000m, TouristCount = 3, HasWifi = true, ExtraCharges = 8000m });
+            tourList.Add(new Tour { Direction = Direction.Italy, DepartureDate = new DateTime(2025, 8, 12), NightsCount = 5, PricePerPerson = 48000m, TouristCount = 1, HasWifi = false, ExtraCharges = 2000m });
+            tourList.Add(new Tour { Direction = Direction.France, DepartureDate = new DateTime(2025, 9, 3), NightsCount = 12, PricePerPerson = 95000m, TouristCount = 4, HasWifi = true, ExtraCharges = 10000m });
+            tourList.Add(new Tour { Direction = Direction.Sushari, DepartureDate = new DateTime(2025, 10, 1), NightsCount = 3, PricePerPerson = 999m, TouristCount = 5, HasWifi = false, ExtraCharges = 0m });
         }
+
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
