@@ -1,7 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 using HotToursRegister.Constants;
-using static dataGridView.App.Infrostructure.Extensions;
 
 namespace HotToursRegister.Models
 {
