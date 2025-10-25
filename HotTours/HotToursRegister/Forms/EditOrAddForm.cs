@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using dataGridView.App.Infrostructure;
 using HotToursRegister.Constants;
+using HotToursRegister.Infrastructure;
 using HotToursRegister.Models;
 
 namespace HotToursRegister.Forms

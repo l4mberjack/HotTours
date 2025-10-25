@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
-using HotToursRegister.Models;
 
-namespace dataGridView.App.Infrostructure
+namespace HotToursRegister.Infrastructure
 {
-    //Статический класс расширений для работы с привязкой данных и валидацией в Windows Forms
+    /// <summary>
+    /// Расширения приложения для валидации данных и биндингов
+    /// </summary>
     public static class Extensions
     {
         /// <summary>
