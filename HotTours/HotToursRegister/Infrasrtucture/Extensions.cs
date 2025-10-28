@@ -87,17 +87,32 @@ namespace HotToursRegister.Infrastructure
 
             var propertyValue = sourcePropertyInfo.GetValue(source);
 
-            bool isValid = Validator.TryValidateProperty(propertyValue, context, results);
+            // Проверка конкретного контрола
+            var isValid = Validator.TryValidateProperty(propertyValue, context, results);
 
             if (!isValid && results.Count > 0)
             {
-                errorProvider.SetError(control, results[0].ErrorMessage);
+                // Фильтрация ошибок текущего свойства
+                var messages = results
+                    .Where(r => r.MemberNames.Contains(sourcePropertyName))
+                    .Select(r => r.ErrorMessage)
+                    .ToArray();
+
+                if (messages.Length > 0)
+                {
+                    errorProvider.SetError(control, string.Join(Environment.NewLine, messages));
+                }
+                else
+                {
+                    errorProvider.SetError(control, string.Empty);
+                }
             }
             else
             {
                 errorProvider.SetError(control, string.Empty);
             }
         }
+
 
         /// <summary>
         /// Метод извлечения имени свойства из лямбда-выражения
@@ -117,6 +132,19 @@ namespace HotToursRegister.Infrastructure
             }
 
             throw new ArgumentException("Expression is not a property", nameof(expression));
+        }
+
+        /// <summary>
+        /// Валидация даты
+        /// </summary>
+        public static ValidationResult? ValidateDepartureDate(object? value)
+        {
+            if (value is DateTime date && date < DateTime.Today)
+            {
+                return new ValidationResult("Дата вылета не может быть в прошлом!");
+            }
+
+            return ValidationResult.Success;
         }
     }
 }

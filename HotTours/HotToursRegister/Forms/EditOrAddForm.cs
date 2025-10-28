@@ -43,7 +43,17 @@ namespace HotToursRegister.Forms
             }
             else
             {
-                targetTour = sourceTour.Clone();
+                targetTour = new Tour
+                {
+                    Id = sourceTour.Id,
+                    Direction = sourceTour.Direction,
+                    DepartureDate = sourceTour.DepartureDate,
+                    NightsCount = sourceTour.NightsCount,
+                    PricePerPerson = sourceTour.PricePerPerson,
+                    TouristCount = sourceTour.TouristCount,
+                    HasWifi = sourceTour.HasWifi,
+                    ExtraCharges = sourceTour.ExtraCharges
+                };
 
                 Text = "Редактирование тура";
                 buttonAddOrEdit.Text = "Сохранить";
@@ -91,7 +101,7 @@ namespace HotToursRegister.Forms
             var context = new ValidationContext(targetTour);
             var results = new List<ValidationResult>();
 
-            bool isValid = Validator.TryValidateObject(targetTour, context, results, true);
+            var isValid = Validator.TryValidateObject(targetTour, context, results, true);
 
             if (isValid)
             {
@@ -100,7 +110,7 @@ namespace HotToursRegister.Forms
                 return;
             }
 
-            // Пробегаемся по ошибкам и отображаем их на нужных контролах
+            // Отображение ошибок на соответствующих контролах
             foreach (var validationResult in results)
             {
                 foreach (var memberName in validationResult.MemberNames)

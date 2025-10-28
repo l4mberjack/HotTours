@@ -9,7 +9,7 @@ namespace HotToursRegister
         /// <summary>
         /// Список туров
         /// </summary>
-        public BindingList<Tour> tourList = new();
+        private BindingList<Tour> tourList = new();
 
         private BindingSource toursBinding = new();
 
