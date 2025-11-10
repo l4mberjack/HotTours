@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using HotToursRegister.Constants;
-using HotToursRegister.Infrastructure;
+using HotToursRegister.Infrasrtucture;
 using HotToursRegister.Models;
 
 namespace HotToursRegister.Forms

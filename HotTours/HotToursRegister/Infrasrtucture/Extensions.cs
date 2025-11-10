@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 
-namespace HotToursRegister.Infrastructure
+namespace HotToursRegister.Infrasrtucture
 {
     /// <summary>
     /// Расширения приложения для валидации данных и биндингов
@@ -119,7 +119,7 @@ namespace HotToursRegister.Infrastructure
         /// </summary>
         private static string GetPropertyName<TType>(Expression<Func<TType, object>> expression)
         {
-            Expression body = expression.Body;
+            var body = expression.Body;
             if (body is UnaryExpression unary && unary.Operand is MemberExpression memberExp)
             {
                 return memberExp.Member.Name;
@@ -132,19 +132,6 @@ namespace HotToursRegister.Infrastructure
             }
 
             throw new ArgumentException("Expression is not a property", nameof(expression));
-        }
-
-        /// <summary>
-        /// Валидация даты
-        /// </summary>
-        public static ValidationResult? ValidateDepartureDate(object? value)
-        {
-            if (value is DateTime date && date < DateTime.Today)
-            {
-                return new ValidationResult("Дата вылета не может быть в прошлом!");
-            }
-
-            return ValidationResult.Success;
         }
     }
 }

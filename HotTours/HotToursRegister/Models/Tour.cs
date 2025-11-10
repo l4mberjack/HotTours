@@ -1,7 +1,6 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using HotToursRegister.Constants;
-using HotToursRegister.Infrastructure;
+using HotToursRegister.Infrasrtucture;
 
 namespace HotToursRegister.Models
 {
@@ -26,7 +25,7 @@ namespace HotToursRegister.Models
         /// Дата вылета
         /// </summary>
         [Required]
-        [CustomValidation(typeof(Extensions), nameof(Extensions.ValidateDepartureDate))]
+        [DepartureDate]
         public DateTime DepartureDate { get; set; }
 
         /// <summary>
