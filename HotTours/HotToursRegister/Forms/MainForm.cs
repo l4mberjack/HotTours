@@ -2,7 +2,7 @@
 using HotToursRegister.Forms;
 using HotToursRegister.Models;
 
-namespace HotToursRegister
+namespace HotToursRegister.Forms
 {
     public partial class MainForm : Form
     {
