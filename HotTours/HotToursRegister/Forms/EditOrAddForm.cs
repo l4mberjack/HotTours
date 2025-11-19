@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using HotToursRegister.Constants;
+using HotTours.Entities;
+using HotTours.Entities.Contracts;
 using HotToursRegister.Infrasrtucture;
-using HotToursRegister.Models;
 
 namespace HotToursRegister.Forms
 {

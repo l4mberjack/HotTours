@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using HotToursRegister.Constants;
-using HotToursRegister.Infrasrtucture;
+using HotTours.Entities.Contracts;
+using HotTours.Entities.Validators;
 
-namespace HotToursRegister.Models
+namespace HotTours.Entities
 {
     /// <summary>
     /// Класс, описывающий туристическую поездку
@@ -56,10 +56,5 @@ namespace HotToursRegister.Models
         /// </summary>
         [Range(0, (double)TourLimits.MaxExtraCharges, ErrorMessage = "Доплаты не могут превышать 500 000")]
         public decimal ExtraCharges { get; set; }
-
-        /// <summary>
-        /// Общая стоимость тура
-        /// </summary>
-        public decimal TotalCost => (PricePerPerson * TouristCount) + ExtraCharges;
     }
 }

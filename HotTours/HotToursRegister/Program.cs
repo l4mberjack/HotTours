@@ -1,4 +1,8 @@
-﻿namespace HotToursRegister
+﻿using HotTours.Services;
+using HotTours.Services.Contracts;
+using HotToursRegister.Forms;
+
+namespace HotToursRegister
 {
     internal static class Program
     {
@@ -11,7 +15,8 @@
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            ITourStorage tourStorage = new InMemoryStorage();
+            Application.Run(new MainForm(tourStorage));
         }
     }
 }

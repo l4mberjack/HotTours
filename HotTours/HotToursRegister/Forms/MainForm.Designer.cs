@@ -55,34 +55,35 @@
             // 
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelToursCount, toolStripStatusLabelSumOfTours, toolStripStatusLabelToursWithExtraCharge, toolStripStatusLabelSumOfExtraCharge });
-            statusStrip.Location = new Point(0, 424);
+            statusStrip.Location = new Point(0, 316);
             statusStrip.Name = "statusStrip";
-            statusStrip.Size = new Size(1043, 26);
+            statusStrip.Padding = new Padding(1, 0, 12, 0);
+            statusStrip.Size = new Size(913, 22);
             statusStrip.TabIndex = 0;
             statusStrip.Text = "statusStrip1";
             // 
             // toolStripStatusLabelToursCount
             // 
             toolStripStatusLabelToursCount.Name = "toolStripStatusLabelToursCount";
-            toolStripStatusLabelToursCount.Size = new Size(151, 20);
+            toolStripStatusLabelToursCount.Size = new Size(118, 17);
             toolStripStatusLabelToursCount.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabelSumOfTours
             // 
             toolStripStatusLabelSumOfTours.Name = "toolStripStatusLabelSumOfTours";
-            toolStripStatusLabelSumOfTours.Size = new Size(151, 20);
+            toolStripStatusLabelSumOfTours.Size = new Size(118, 17);
             toolStripStatusLabelSumOfTours.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabelToursWithExtraCharge
             // 
             toolStripStatusLabelToursWithExtraCharge.Name = "toolStripStatusLabelToursWithExtraCharge";
-            toolStripStatusLabelToursWithExtraCharge.Size = new Size(151, 20);
+            toolStripStatusLabelToursWithExtraCharge.Size = new Size(118, 17);
             toolStripStatusLabelToursWithExtraCharge.Text = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabelSumOfExtraCharge
             // 
             toolStripStatusLabelSumOfExtraCharge.Name = "toolStripStatusLabelSumOfExtraCharge";
-            toolStripStatusLabelSumOfExtraCharge.Size = new Size(151, 20);
+            toolStripStatusLabelSumOfExtraCharge.Size = new Size(118, 17);
             toolStripStatusLabelSumOfExtraCharge.Text = "toolStripStatusLabel1";
             // 
             // menuStrip
@@ -91,28 +92,29 @@
             menuStrip.Items.AddRange(new ToolStripItem[] { AddToolStripMenuItem, DeleteToolStripMenuItem, EditToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
-            menuStrip.Size = new Size(1043, 28);
+            menuStrip.Padding = new Padding(5, 2, 0, 2);
+            menuStrip.Size = new Size(913, 24);
             menuStrip.TabIndex = 1;
             menuStrip.Text = "menuStrip1";
             // 
             // AddToolStripMenuItem
             // 
             AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            AddToolStripMenuItem.Size = new Size(90, 24);
+            AddToolStripMenuItem.Size = new Size(71, 20);
             AddToolStripMenuItem.Text = "Добавить";
             AddToolStripMenuItem.Click += AddToolStripMenuItem_Click;
             // 
             // DeleteToolStripMenuItem
             // 
             DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            DeleteToolStripMenuItem.Size = new Size(79, 24);
+            DeleteToolStripMenuItem.Size = new Size(63, 20);
             DeleteToolStripMenuItem.Text = "Удалить";
             DeleteToolStripMenuItem.Click += DeleteToolStripMenuItem_Click;
             // 
             // EditToolStripMenuItem
             // 
             EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            EditToolStripMenuItem.Size = new Size(125, 24);
+            EditToolStripMenuItem.Size = new Size(99, 20);
             EditToolStripMenuItem.Text = "Редактировать";
             EditToolStripMenuItem.Click += EditToolStripMenuItem_Click;
             // 
@@ -126,12 +128,14 @@
             mainGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             mainGrid.Columns.AddRange(new DataGridViewColumn[] { ColumnDirection, ColumnDepartureDate, ColumnCountNights, ColumnTouristsCount, ColumnPricePerPerson, ColumnExtraCharges, ColumnWiFi, ColumnTotalCost });
             mainGrid.Dock = DockStyle.Fill;
-            mainGrid.Location = new Point(0, 28);
+            mainGrid.Location = new Point(0, 24);
+            mainGrid.Margin = new Padding(3, 2, 3, 2);
             mainGrid.Name = "mainGrid";
             mainGrid.ReadOnly = true;
             mainGrid.RowHeadersWidth = 51;
-            mainGrid.Size = new Size(1043, 396);
+            mainGrid.Size = new Size(913, 292);
             mainGrid.TabIndex = 2;
+            mainGrid.CellFormatting += mainGrid_CellFormatting;
             // 
             // ColumnDirection
             // 
@@ -195,15 +199,17 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1043, 450);
+            ClientSize = new Size(913, 338);
             Controls.Add(mainGrid);
             Controls.Add(statusStrip);
             Controls.Add(menuStrip);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Главная форма";
+            Load += MainForm_Load;
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
             menuStrip.ResumeLayout(false);
