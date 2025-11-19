@@ -3,7 +3,7 @@
     /// <summary>
     /// Лимиты значений в тур
     /// </summary>
-    public static class TourLimits
+    public class TourLimits
     {
         // Цены
         public const decimal MaxPricePerPerson = 5_000_000m;

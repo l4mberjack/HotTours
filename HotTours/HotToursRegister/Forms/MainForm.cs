@@ -2,14 +2,14 @@
 using HotToursRegister.Forms;
 using HotToursRegister.Models;
 
-namespace HotToursRegister
+namespace HotToursRegister.Forms
 {
     public partial class MainForm : Form
     {
         /// <summary>
         /// Список туров
         /// </summary>
-        public BindingList<Tour> tourList = new();
+        private BindingList<Tour> tourList = new();
 
         private BindingSource toursBinding = new();
 

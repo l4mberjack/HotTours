@@ -1,6 +1,6 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using HotToursRegister.Constants;
+using HotToursRegister.Infrasrtucture;
 
 namespace HotToursRegister.Models
 {
@@ -17,7 +17,7 @@ namespace HotToursRegister.Models
         /// <summary>
         /// Направление тура
         /// </summary>
-        [DeniedValues(Direction.Uknown)]
+        [DeniedValues(Direction.Uknown, ErrorMessage = "Значение не должно быть Uknown")]
         [EnumDataType(typeof(Direction))]
         public Direction Direction { get; set; }
 
@@ -25,7 +25,7 @@ namespace HotToursRegister.Models
         /// Дата вылета
         /// </summary>
         [Required]
-        [CustomValidation(typeof(Tour), nameof(ValidateDepartureDate))]
+        [DepartureDate]
         public DateTime DepartureDate { get; set; }
 
         /// <summary>
@@ -61,24 +61,5 @@ namespace HotToursRegister.Models
         /// Общая стоимость тура
         /// </summary>
         public decimal TotalCost => (PricePerPerson * TouristCount) + ExtraCharges;
-
-        /// <summary>
-        /// Создание копии
-        /// </summary>
-        /// <returns></returns>
-        public Tour Clone()
-        {
-            return (Tour)MemberwiseClone();
-        }
-
-        /// <summary>
-        /// Валидация даты
-        /// </summary>
-        public static ValidationResult? ValidateDepartureDate(DateTime date)
-        {
-            return date < DateTime.Today
-                ? new ValidationResult("Дата вылета не может быть в прошлом!")
-                : ValidationResult.Success;
-        }
     }
 }

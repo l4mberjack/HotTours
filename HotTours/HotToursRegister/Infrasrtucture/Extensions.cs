@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 
-namespace HotToursRegister.Infrastructure
+namespace HotToursRegister.Infrasrtucture
 {
     /// <summary>
     /// Расширения приложения для валидации данных и биндингов
@@ -87,11 +87,25 @@ namespace HotToursRegister.Infrastructure
 
             var propertyValue = sourcePropertyInfo.GetValue(source);
 
-            bool isValid = Validator.TryValidateProperty(propertyValue, context, results);
+            // Проверка конкретного контрола
+            var isValid = Validator.TryValidateProperty(propertyValue, context, results);
 
             if (!isValid && results.Count > 0)
             {
-                errorProvider.SetError(control, results[0].ErrorMessage);
+                // Фильтрация ошибок текущего свойства
+                var messages = results
+                    .Where(r => r.MemberNames.Contains(sourcePropertyName))
+                    .Select(r => r.ErrorMessage)
+                    .ToArray();
+
+                if (messages.Length > 0)
+                {
+                    errorProvider.SetError(control, string.Join(Environment.NewLine, messages));
+                }
+                else
+                {
+                    errorProvider.SetError(control, string.Empty);
+                }
             }
             else
             {
@@ -99,12 +113,13 @@ namespace HotToursRegister.Infrastructure
             }
         }
 
+
         /// <summary>
         /// Метод извлечения имени свойства из лямбда-выражения
         /// </summary>
         private static string GetPropertyName<TType>(Expression<Func<TType, object>> expression)
         {
-            Expression body = expression.Body;
+            var body = expression.Body;
             if (body is UnaryExpression unary && unary.Operand is MemberExpression memberExp)
             {
                 return memberExp.Member.Name;

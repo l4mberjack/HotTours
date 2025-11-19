@@ -1,4 +1,4 @@
-﻿namespace HotToursRegister
+﻿namespace HotToursRegister.Forms
 {
     partial class MainForm
     {
