@@ -1,4 +1,4 @@
-﻿namespace HotTours.Entities
+﻿namespace Entities
 {
     /// <summary>
     /// Направление тура

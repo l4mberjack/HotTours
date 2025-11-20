@@ -1,4 +1,4 @@
-﻿namespace HotTours.Entities.Contracts
+﻿namespace Entities.Contracts
 {
     /// <summary>
     /// Лимиты значений в тур

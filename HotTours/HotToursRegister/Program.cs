@@ -1,6 +1,6 @@
-﻿using HotTours.Services;
-using HotTours.Services.Contracts;
-using HotToursRegister.Forms;
+﻿using HotToursRegister.Forms;
+using Services;
+using Services.Contracts;
 
 namespace HotToursRegister
 {

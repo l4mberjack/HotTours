@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using HotTours.Entities.Contracts;
-using HotTours.Entities.Validators;
+using Entities.Contracts;
+using Entities.Validators;
 
-namespace HotTours.Entities
+namespace Entities
 {
     /// <summary>
     /// Класс, описывающий туристическую поездку

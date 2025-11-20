@@ -1,5 +1,5 @@
-﻿using HotTours.Entities;
-using HotTours.Services.Contracts;
+﻿using Entities;
+using Services.Contracts;
 
 namespace HotToursRegister.Forms
 {

@@ -1,7 +1,6 @@
-﻿using HotTours.Entities;
-using Services.Contracts;
+﻿using Entities;
 
-namespace HotTours.Services.Contracts
+namespace Services.Contracts
 {
     /// <summary>
     /// Интерфейс хранилища

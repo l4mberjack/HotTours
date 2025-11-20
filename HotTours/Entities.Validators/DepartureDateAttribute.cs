@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HotTours.Entities.Validators
+namespace Entities.Validators
 {
     /// <summary>
     /// Проверка, что дата вылета не раньше текущей даты

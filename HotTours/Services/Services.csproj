@@ -1,14 +1,55 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj" />
-    <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
-  </ItemGroup>
+        <!-- NuGet metadata -->
+        <PackageId>$(AssemblyName)</PackageId>
+        <Authors>l4mberjack</Authors>
+        <Description>Memory Storage — Фролов Дмитрий ИП-22-3</Description>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>Storage;InMemoryStorage;ListStorage</PackageTags>
+        <Product>$(AssemblyName)</Product>
+
+        <!-- Сборка nuget при билдe -->
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>1.0.4</Version>
+
+        <!-- Очень важно -->
+        <IncludeBuildOutput>true</IncludeBuildOutput>
+    </PropertyGroup>
+
+
+    <!-- Проекты, которые должны попасть внутрь пакета -->
+    <ItemGroup>
+        <ProjectReference Include="..\Entities\Entities.csproj" />
+        <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
+    </ItemGroup>
+
+
+    <!-- README + ICON -->
+    <ItemGroup>
+        <None Update="README.md" Pack="true" PackagePath="\" />
+        <None Update="icon.png"  Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+
+    <!-- ДОБАВЛЕНИЕ DLL зависимых проектов ВНУТРЬ NUPKG -->
+    <Target Name="PackDependencies" AfterTargets="Build">
+        <ItemGroup>
+            <!-- DLL текущего проекта уже будет включена автоматически -->
+
+            <None Include="$(SolutionDir)Entities\bin\$(Configuration)\net8.0\Entities.dll"
+                  Pack="true"
+                  PackagePath="lib\net8.0\" />
+
+            <None Include="$(SolutionDir)Services.Contracts\bin\$(Configuration)\net8.0\Services.Contracts.dll"
+                  Pack="true"
+                  PackagePath="lib\net8.0\" />
+        </ItemGroup>
+    </Target>
 
 </Project>

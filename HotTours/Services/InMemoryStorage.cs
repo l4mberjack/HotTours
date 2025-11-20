@@ -1,8 +1,7 @@
-﻿using HotTours.Entities;
-using HotTours.Services.Contracts;
+﻿using Entities;
 using Services.Contracts;
 
-namespace HotTours.Services
+namespace Services
 {
     /// <summary>
     /// Сервис для доступа к турам в памяти
@@ -73,7 +72,7 @@ namespace HotTours.Services
             var statistics = new TourStatistics
             {
                 TourCount = tours.Count(),
-                TotalPriceAllTours = tours.Sum(x => (x.PricePerPerson * x.TouristCount) + x.ExtraCharges),
+                TotalPriceAllTours = tours.Sum(x => x.PricePerPerson * x.TouristCount + x.ExtraCharges),
                 TourCountCharge = tours.Where(x => x.ExtraCharges > 0).Count(),
                 TourSumCharge = tours.Sum(x => x.ExtraCharges)
             };

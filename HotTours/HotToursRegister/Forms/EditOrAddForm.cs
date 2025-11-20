@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using HotTours.Entities;
-using HotTours.Entities.Contracts;
+using Entities;
+using Entities.Contracts;
 using HotToursRegister.Infrasrtucture;
 
 namespace HotToursRegister.Forms
