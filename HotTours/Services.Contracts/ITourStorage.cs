@@ -3,7 +3,7 @@
 namespace Services.Contracts
 {
     /// <summary>
-    /// Хранилище данных в памяти
+    /// Хранилище
     /// </summary>
     public interface ITourStorage
     {
