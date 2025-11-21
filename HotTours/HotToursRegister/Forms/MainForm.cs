@@ -15,7 +15,6 @@ namespace HotToursRegister.Forms
         {
             InitializeComponent();
             this.tourStorage = tourStorage;
-            mainGrid.AutoGenerateColumns = false;
             SetupDataGrid();
         }
 
