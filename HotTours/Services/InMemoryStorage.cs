@@ -24,23 +24,23 @@ namespace Services
             tours.Add(new Tour { Direction = Direction.Sushari, DepartureDate = new DateTime(2025, 10, 1), NightsCount = 3, PricePerPerson = 999m, TouristCount = 5, HasWifi = false, ExtraCharges = 0m });
         }
 
-        public Task<ICollection<Tour>> GetAll(CancellationToken token)
+        Task<ICollection<Tour>> ITourStorage.GetAll(CancellationToken token)
         {
             return Task.FromResult<ICollection<Tour>>(tours);
         }
 
-        public Task<Tour?> GetById(Guid id, CancellationToken token)
+        Task<Tour?> ITourStorage.GetById(Guid id, CancellationToken token)
         {
             return Task.FromResult(tours.FirstOrDefault(x => x.Id == id));
         }
 
-        public Task Add(Tour tour, CancellationToken token)
+        Task ITourStorage.Add(Tour tour, CancellationToken token)
         {
             tours.Add(tour);
             return Task.CompletedTask;
         }
 
-        public Task Update(Tour tour, CancellationToken token)
+        Task ITourStorage.Update(Tour tour, CancellationToken token)
         {
             var exitsTour = tours.FirstOrDefault(x => x.Id == tour.Id);
             if (exitsTour != null)
@@ -57,7 +57,7 @@ namespace Services
             return Task.CompletedTask;
         }
 
-        public Task Delete(Guid id, CancellationToken token)
+        Task ITourStorage.Delete(Guid id, CancellationToken token)
         {
             var tour = tours.FirstOrDefault(x => x.Id == id);
             if (tour != null)
@@ -67,7 +67,7 @@ namespace Services
             return Task.CompletedTask;
         }
 
-        public Task<TourStatistics> GetStatistics(CancellationToken token)
+        Task<TourStatistics> ITourStorage.GetStatistics(CancellationToken token)
         {
             var statistics = new TourStatistics
             {

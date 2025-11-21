@@ -36,20 +36,4 @@
         <None Update="icon.png"  Pack="true" PackagePath="\" />
     </ItemGroup>
 
-
-    <!-- ДОБАВЛЕНИЕ DLL зависимых проектов ВНУТРЬ NUPKG -->
-    <Target Name="PackDependencies" AfterTargets="Build">
-        <ItemGroup>
-            <!-- DLL текущего проекта уже будет включена автоматически -->
-
-            <None Include="$(SolutionDir)Entities\bin\$(Configuration)\net8.0\Entities.dll"
-                  Pack="true"
-                  PackagePath="lib\net8.0\" />
-
-            <None Include="$(SolutionDir)Services.Contracts\bin\$(Configuration)\net8.0\Services.Contracts.dll"
-                  Pack="true"
-                  PackagePath="lib\net8.0\" />
-        </ItemGroup>
-    </Target>
-
 </Project>
