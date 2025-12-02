@@ -1,12 +1,18 @@
-﻿namespace HotToursRegister.Constants
+﻿namespace Entities.Contracts
 {
     /// <summary>
     /// Лимиты значений в тур
     /// </summary>
     public class TourLimits
     {
-        // Цены
+        /// <summary>
+        /// Максимальная цена за человека
+        /// </summary>
         public const decimal MaxPricePerPerson = 5_000_000m;
+
+        /// <summary>
+        /// Максимальная 
+        /// </summary>
         public const decimal MaxExtraCharges = 500_000m;
         public const decimal MinPricePerPerson = 5_000m;
 
