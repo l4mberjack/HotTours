@@ -16,7 +16,7 @@
 
         <!-- Сборка nuget при билдe -->
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.4</Version>
+        <Version>1.0.6</Version>
 
         <!-- Очень важно -->
         <IncludeBuildOutput>true</IncludeBuildOutput>
@@ -33,7 +33,7 @@
     <!-- README + ICON -->
     <ItemGroup>
         <None Update="README.md" Pack="true" PackagePath="\" />
-        <None Update="icon.png"  Pack="true" PackagePath="\" />
+        <None Update="icon.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>

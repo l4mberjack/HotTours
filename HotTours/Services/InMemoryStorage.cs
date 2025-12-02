@@ -13,15 +13,9 @@ namespace Services
         /// <summary>
         /// Инициализация экземпляра хранилища
         /// </summary>
-        public InMemoryStorage()
+        public InMemoryStorage(IEnumerable<Tour>? initialData = null)
         {
-            tours = new List<Tour>();
-            tours.Clear();
-            tours.Add(new Tour { Direction = Direction.Turkey, DepartureDate = new DateTime(2025, 6, 10), NightsCount = 7, PricePerPerson = 55000m, TouristCount = 2, HasWifi = true, ExtraCharges = 5000m });
-            tours.Add(new Tour { Direction = Direction.Spain, DepartureDate = new DateTime(2025, 7, 5), NightsCount = 10, PricePerPerson = 72000m, TouristCount = 3, HasWifi = true, ExtraCharges = 8000m });
-            tours.Add(new Tour { Direction = Direction.Italy, DepartureDate = new DateTime(2025, 8, 12), NightsCount = 5, PricePerPerson = 48000m, TouristCount = 1, HasWifi = false, ExtraCharges = 2000m });
-            tours.Add(new Tour { Direction = Direction.France, DepartureDate = new DateTime(2025, 9, 3), NightsCount = 12, PricePerPerson = 95000m, TouristCount = 4, HasWifi = true, ExtraCharges = 10000m });
-            tours.Add(new Tour { Direction = Direction.Sushari, DepartureDate = new DateTime(2025, 10, 1), NightsCount = 3, PricePerPerson = 999m, TouristCount = 5, HasWifi = false, ExtraCharges = 0m });
+            tours = initialData?.ToList() ?? new List<Tour>();
         }
 
         Task<ICollection<Tour>> ITourStorage.GetAll(CancellationToken token)
