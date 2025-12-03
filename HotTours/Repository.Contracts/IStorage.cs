@@ -5,7 +5,7 @@ namespace Repository.Contracts
     /// <summary>
     /// Хранилище
     /// </summary>
-    public interface ITourStorage
+    public interface IStorage
     {
         /// <summary>
         /// Добавление тура

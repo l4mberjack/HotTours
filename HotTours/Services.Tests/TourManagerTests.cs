@@ -17,7 +17,7 @@ namespace Services.Tests
     public class TourManagerTests
     {
         private readonly TourManager tourManager;
-        private readonly Mock<ITourStorage> storageMock = new();
+        private readonly Mock<IStorage> storageMock = new();
         public TourManagerTests()
         {
             var loggerFactory = new Mock<ILoggerFactory>();

@@ -1,8 +1,8 @@
 ﻿using HotToursRegister.Forms;
 using Microsoft.Extensions.Logging;
 using Repository;
-using Repository.Contracts;
 using Serilog;
+using Services;
 
 namespace HotToursRegister
 {
@@ -17,9 +17,21 @@ namespace HotToursRegister
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            ITourStorage tourStorage = new InMemoryStorage();
-            var loggerFactory = new LoggerFactory();
-            Application.Run(new MainForm(tourStorage));
+            var loggerConf = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Debug()
+                .WriteTo.File("logs/log-.txt",
+                    rollingInterval: RollingInterval.Day,
+                    outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+                .WriteTo.Seq("http://localhost:5341",
+                    apiKey: "tgWN1CkKsmiF6PKQbcly")
+                .CreateLogger();
+
+            using var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddSerilog(loggerConf);
+            });
+            Application.Run(new MainForm(new TourManager(new InMemoryStorage(), loggerFactory)));
         }
     }
 }

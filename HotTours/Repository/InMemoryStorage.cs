@@ -6,7 +6,7 @@ namespace Repository
     /// <summary>
     /// Сервис для доступа к турам в памяти
     /// </summary>
-    public class InMemoryStorage : ITourStorage
+    public class InMemoryStorage : IStorage
     {
         private List<Tour> tours;
 
@@ -18,23 +18,23 @@ namespace Repository
             tours = initialData?.ToList() ?? new List<Tour>();
         }
 
-        Task<ICollection<Tour>> ITourStorage.GetAll(CancellationToken token)
+        Task<ICollection<Tour>> IStorage.GetAll(CancellationToken token)
         {
             return Task.FromResult<ICollection<Tour>>(tours);
         }
 
-        Task<Tour?> ITourStorage.GetById(Guid id, CancellationToken token)
+        Task<Tour?> IStorage.GetById(Guid id, CancellationToken token)
         {
             return Task.FromResult(tours.FirstOrDefault(x => x.Id == id));
         }
 
-        Task ITourStorage.Add(Tour tour, CancellationToken token)
+        Task IStorage.Add(Tour tour, CancellationToken token)
         {
             tours.Add(tour);
             return Task.CompletedTask;
         }
 
-        Task ITourStorage.Update(Tour tour, CancellationToken token)
+        Task IStorage.Update(Tour tour, CancellationToken token)
         {
             var exitsTour = tours.FirstOrDefault(x => x.Id == tour.Id);
             if (exitsTour != null)
@@ -51,7 +51,7 @@ namespace Repository
             return Task.CompletedTask;
         }
 
-        Task ITourStorage.Delete(Guid id, CancellationToken token)
+        Task IStorage.Delete(Guid id, CancellationToken token)
         {
             var tour = tours.FirstOrDefault(x => x.Id == id);
             if (tour != null)
@@ -61,7 +61,7 @@ namespace Repository
             return Task.CompletedTask;
         }
 
-        Task<TourStatistics> ITourStorage.GetStatistics(CancellationToken token)
+        Task<TourStatistics> IStorage.GetStatistics(CancellationToken token)
         {
             var statistics = new TourStatistics
             {

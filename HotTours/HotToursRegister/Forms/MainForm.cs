@@ -1,21 +1,20 @@
 ﻿using Entities;
 using Repository.Contracts;
-using Services.Contracts;
 
 namespace HotToursRegister.Forms
 {
     public partial class MainForm : Form
     {
-        private ITourStorage tourStorage;
+        private IStorage tourManager;
         private BindingSource bindingSource = new();
 
         /// <summary>
         /// Главная форма
         /// </summary>
-        public MainForm(ITourStorage tourStorage)
+        public MainForm(IStorage tourManager)
         {
             InitializeComponent();
-            this.tourStorage = tourStorage;
+            this.tourManager = tourManager;
             SetupDataGrid();
             LoadTestData();
         }
@@ -32,7 +31,7 @@ namespace HotToursRegister.Forms
 
             foreach (var tour in tours)
             {
-                await tourStorage.Add(tour, CancellationToken.None);
+                await tourManager.Add(tour, CancellationToken.None);
             }
         }
 
@@ -41,7 +40,7 @@ namespace HotToursRegister.Forms
         /// </summary>
         private async Task SetStatistics()
         {
-            var statistics = await tourStorage.GetStatistics(CancellationToken.None);
+            var statistics = await tourManager.GetStatistics(CancellationToken.None);
             toolStripStatusLabelSumOfExtraCharge.Text = $"Сумма доплат: {statistics.TourSumCharge}";
             toolStripStatusLabelSumOfTours.Text = $"Сумма за все туры: {statistics.TotalPriceAllTours}";
             toolStripStatusLabelToursCount.Text = $"Количество туров: {statistics.TourCount}";
@@ -68,7 +67,7 @@ namespace HotToursRegister.Forms
 
         private async Task LoadData()
         {
-            var tours = await tourStorage.GetAll(CancellationToken.None);
+            var tours = await tourManager.GetAll(CancellationToken.None);
             bindingSource.DataSource = tours.ToList();
             mainGrid.DataSource = bindingSource;
             await SetStatistics();
@@ -76,7 +75,7 @@ namespace HotToursRegister.Forms
 
         private async Task OnUpdate()
         {
-            var tours = await tourStorage.GetAll(CancellationToken.None);
+            var tours = await tourManager.GetAll(CancellationToken.None);
             bindingSource.DataSource = tours.ToList();
             bindingSource.ResetBindings(false);
             await SetStatistics();
@@ -94,7 +93,7 @@ namespace HotToursRegister.Forms
             var tour = (Tour)mainGrid.SelectedRows[0].DataBoundItem;
             if (MessageBox.Show($"Удалить '{tour.Direction}'?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                await tourStorage.Delete(tour.Id, CancellationToken.None);
+                await tourManager.Delete(tour.Id, CancellationToken.None);
                 await OnUpdate();
             }
         }
@@ -105,7 +104,7 @@ namespace HotToursRegister.Forms
 
             if (AddOrEditForm.ShowDialog(this) == DialogResult.OK)
             {
-                await tourStorage.Add(AddOrEditForm.CurrentTour, CancellationToken.None);
+                await tourManager.Add(AddOrEditForm.CurrentTour, CancellationToken.None);
                 await OnUpdate();
             }
         }
@@ -122,7 +121,7 @@ namespace HotToursRegister.Forms
             var editForm = new EditOrAddForm(tour);
             if (editForm.ShowDialog() == DialogResult.OK)
             {
-                await tourStorage.Update(editForm.CurrentTour, CancellationToken.None);
+                await tourManager.Update(editForm.CurrentTour, CancellationToken.None);
                 await OnUpdate();
             }
         }
