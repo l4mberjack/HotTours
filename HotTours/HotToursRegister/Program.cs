@@ -1,6 +1,8 @@
 ﻿using HotToursRegister.Forms;
-using Services;
-using Services.Contracts;
+using Microsoft.Extensions.Logging;
+using Repository;
+using Repository.Contracts;
+using Serilog;
 
 namespace HotToursRegister
 {
@@ -16,6 +18,7 @@ namespace HotToursRegister
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             ITourStorage tourStorage = new InMemoryStorage();
+            var loggerFactory = new LoggerFactory();
             Application.Run(new MainForm(tourStorage));
         }
     }

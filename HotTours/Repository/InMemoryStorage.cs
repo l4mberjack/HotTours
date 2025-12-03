@@ -1,7 +1,7 @@
 ﻿using Entities;
-using Services.Contracts;
+using Repository.Contracts;
 
-namespace Services
+namespace Repository
 {
     /// <summary>
     /// Сервис для доступа к турам в памяти

@@ -1,4 +1,4 @@
-﻿namespace Services.Contracts
+﻿namespace Repository.Contracts
 {
     /// <summary>
     /// Класс хранения статистики туров

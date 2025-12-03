@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Repository.Contracts;
 using Services.Contracts;
 
 namespace HotToursRegister.Forms

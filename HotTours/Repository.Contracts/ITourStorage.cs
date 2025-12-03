@@ -1,6 +1,6 @@
 ﻿using Entities;
 
-namespace Services.Contracts
+namespace Repository.Contracts
 {
     /// <summary>
     /// Хранилище
