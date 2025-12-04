@@ -1,17 +1,18 @@
 ﻿using Entities;
 using Repository.Contracts;
+using Services.Contracts;
 
 namespace HotToursRegister.Forms
 {
     public partial class MainForm : Form
     {
-        private IStorage tourManager;
+        private ITourManager tourManager;
         private BindingSource bindingSource = new();
 
         /// <summary>
         /// Главная форма
         /// </summary>
-        public MainForm(IStorage tourManager)
+        public MainForm(ITourManager tourManager)
         {
             InitializeComponent();
             this.tourManager = tourManager;

@@ -2,13 +2,14 @@
 using Entities;
 using Microsoft.Extensions.Logging;
 using Repository.Contracts;
+using Services.Contracts;
 
 namespace Services
 {
     /// <summary>
     /// Менеджер тура
     /// </summary>
-    public class TourManager : IStorage
+    public class TourManager : ITourManager
     {
         private readonly IStorage storage;
         private readonly ILogger logger;
