@@ -82,6 +82,7 @@ namespace Services
             }
             finally
             {
+                sw.Stop();
                 logger.LogInformation($"Update выполнен за {sw.ElapsedMilliseconds} мс");
             }
         }
@@ -98,6 +99,7 @@ namespace Services
             }
             finally
             {
+                sw.Stop();
                 logger.LogInformation($"Delete выполнен за {sw.ElapsedMilliseconds} мс");
             }
         }
@@ -114,6 +116,7 @@ namespace Services
             }
             finally
             {
+                sw.Stop();
                 logger.LogInformation($"GetStatistics выполнен за {sw.ElapsedMilliseconds} мс");
             }
         }
