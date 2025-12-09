@@ -12,7 +12,7 @@ namespace Entities
         /// <summary>
         /// Уникальный идентификатор тура
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// Направление тура

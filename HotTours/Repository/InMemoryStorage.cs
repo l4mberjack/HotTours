@@ -1,46 +1,40 @@
 ﻿using Entities;
-using Services.Contracts;
+using Repository.Contracts;
 
-namespace Services
+namespace Repository
 {
     /// <summary>
     /// Сервис для доступа к турам в памяти
     /// </summary>
-    public class InMemoryStorage : ITourStorage
+    public class InMemoryStorage : IStorage
     {
         private List<Tour> tours;
 
         /// <summary>
         /// Инициализация экземпляра хранилища
         /// </summary>
-        public InMemoryStorage()
+        public InMemoryStorage(IEnumerable<Tour>? initialData = null)
         {
-            tours = new List<Tour>();
-            tours.Clear();
-            tours.Add(new Tour { Direction = Direction.Turkey, DepartureDate = new DateTime(2025, 6, 10), NightsCount = 7, PricePerPerson = 55000m, TouristCount = 2, HasWifi = true, ExtraCharges = 5000m });
-            tours.Add(new Tour { Direction = Direction.Spain, DepartureDate = new DateTime(2025, 7, 5), NightsCount = 10, PricePerPerson = 72000m, TouristCount = 3, HasWifi = true, ExtraCharges = 8000m });
-            tours.Add(new Tour { Direction = Direction.Italy, DepartureDate = new DateTime(2025, 8, 12), NightsCount = 5, PricePerPerson = 48000m, TouristCount = 1, HasWifi = false, ExtraCharges = 2000m });
-            tours.Add(new Tour { Direction = Direction.France, DepartureDate = new DateTime(2025, 9, 3), NightsCount = 12, PricePerPerson = 95000m, TouristCount = 4, HasWifi = true, ExtraCharges = 10000m });
-            tours.Add(new Tour { Direction = Direction.Sushari, DepartureDate = new DateTime(2025, 10, 1), NightsCount = 3, PricePerPerson = 999m, TouristCount = 5, HasWifi = false, ExtraCharges = 0m });
+            tours = initialData?.ToList() ?? new List<Tour>();
         }
 
-        Task<ICollection<Tour>> ITourStorage.GetAll(CancellationToken token)
+        Task<ICollection<Tour>> IStorage.GetAll(CancellationToken token)
         {
             return Task.FromResult<ICollection<Tour>>(tours);
         }
 
-        Task<Tour?> ITourStorage.GetById(Guid id, CancellationToken token)
+        Task<Tour?> IStorage.GetById(Guid id, CancellationToken token)
         {
             return Task.FromResult(tours.FirstOrDefault(x => x.Id == id));
         }
 
-        Task ITourStorage.Add(Tour tour, CancellationToken token)
+        Task IStorage.Add(Tour tour, CancellationToken token)
         {
             tours.Add(tour);
             return Task.CompletedTask;
         }
 
-        Task ITourStorage.Update(Tour tour, CancellationToken token)
+        Task IStorage.Update(Tour tour, CancellationToken token)
         {
             var exitsTour = tours.FirstOrDefault(x => x.Id == tour.Id);
             if (exitsTour != null)
@@ -57,7 +51,7 @@ namespace Services
             return Task.CompletedTask;
         }
 
-        Task ITourStorage.Delete(Guid id, CancellationToken token)
+        Task IStorage.Delete(Guid id, CancellationToken token)
         {
             var tour = tours.FirstOrDefault(x => x.Id == id);
             if (tour != null)
@@ -67,7 +61,7 @@ namespace Services
             return Task.CompletedTask;
         }
 
-        Task<TourStatistics> ITourStorage.GetStatistics(CancellationToken token)
+        Task<TourStatistics> IStorage.GetStatistics(CancellationToken token)
         {
             var statistics = new TourStatistics
             {

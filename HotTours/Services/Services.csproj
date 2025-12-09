@@ -16,16 +16,21 @@
 
         <!-- Сборка nuget при билдe -->
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.4</Version>
+        <Version>1.0.6</Version>
 
         <!-- Очень важно -->
         <IncludeBuildOutput>true</IncludeBuildOutput>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
+    </ItemGroup>
+
 
     <!-- Проекты, которые должны попасть внутрь пакета -->
     <ItemGroup>
         <ProjectReference Include="..\Entities\Entities.csproj" />
+        <ProjectReference Include="..\Repository.Contracts\Repository.Contracts.csproj" />
         <ProjectReference Include="..\Services.Contracts\Services.Contracts.csproj" />
     </ItemGroup>
 
@@ -33,7 +38,7 @@
     <!-- README + ICON -->
     <ItemGroup>
         <None Update="README.md" Pack="true" PackagePath="\" />
-        <None Update="icon.png"  Pack="true" PackagePath="\" />
+        <None Update="icon.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>
