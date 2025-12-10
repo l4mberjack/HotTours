@@ -15,7 +15,7 @@ namespace Repository.Contracts
         /// <summary>
         /// Удаление тура
         /// </summary>
-        Task Delete(Guid id, CancellationToken token);
+        Task Delete(Tour tour, CancellationToken token);
 
         /// <summary>
         /// Получение всех туров

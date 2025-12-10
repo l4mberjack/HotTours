@@ -15,9 +15,9 @@ namespace Repository
             context.Add(tour);
             await context.SaveChangesAsync(token);
         }
-        public async Task Delete(Guid id, CancellationToken token)
+        public async Task Delete(Tour tour, CancellationToken token)
         {
-            context.Remove(id);
+            context.Remove(tour);
             await context.SaveChangesAsync(token);
         }
         public async Task<ICollection<Tour>> GetAll(CancellationToken token)

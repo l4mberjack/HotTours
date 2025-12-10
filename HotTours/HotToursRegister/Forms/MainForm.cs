@@ -94,7 +94,7 @@ namespace HotToursRegister.Forms
             var tour = (Tour)mainGrid.SelectedRows[0].DataBoundItem;
             if (MessageBox.Show($"Удалить '{tour.Direction}'?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                await tourManager.Delete(tour.Id, CancellationToken.None);
+                await tourManager.Delete(tour, CancellationToken.None);
                 await OnUpdate();
             }
         }
