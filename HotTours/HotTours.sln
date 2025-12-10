@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Contracts", "Repository.Contracts\Repository.Contracts.csproj", "{6A82BE30-08DD-4858-89F8-B7EAAAB962A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotTourRegister.Context", "HotTourRegister.Context\HotTourRegister.Context.csproj", "{4A91638E-698F-4038-94BB-2DEB020FA863}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{6A82BE30-08DD-4858-89F8-B7EAAAB962A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A82BE30-08DD-4858-89F8-B7EAAAB962A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A82BE30-08DD-4858-89F8-B7EAAAB962A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A91638E-698F-4038-94BB-2DEB020FA863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A91638E-698F-4038-94BB-2DEB020FA863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A91638E-698F-4038-94BB-2DEB020FA863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A91638E-698F-4038-94BB-2DEB020FA863}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
