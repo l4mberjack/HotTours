@@ -39,12 +39,12 @@ namespace Services
         /// <summary>
         /// Получить запись по id
         /// </summary>
-        public Task<Tour?> GetById(Guid id, CancellationToken token)
+        public async Task<Tour?> GetById(Guid id, CancellationToken token)
         {
             var sw = Stopwatch.StartNew();
             try
             {
-                return storage.GetById(id, token);
+                return await storage.GetById(id, token);
             }
             finally
             {
