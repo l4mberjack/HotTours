@@ -39,12 +39,12 @@ namespace Services
         /// <summary>
         /// Получить запись по id
         /// </summary>
-        public Task<Tour?> GetById(Guid id, CancellationToken token)
+        public async Task<Tour?> GetById(Guid id, CancellationToken token)
         {
             var sw = Stopwatch.StartNew();
             try
             {
-                return storage.GetById(id, token);
+                return await storage.GetById(id, token);
             }
             finally
             {
@@ -56,12 +56,12 @@ namespace Services
         /// <summary>
         /// Добавить
         /// </summary>
-        public Task Add(Tour tour, CancellationToken token)
+        public async Task Add(Tour tour, CancellationToken token)
         {
             var sw = Stopwatch.StartNew();
             try
             {
-                return storage.Add(tour, token);
+                await storage.Add(tour, token);
             }
             finally
             {
@@ -73,12 +73,12 @@ namespace Services
         /// <summary>
         /// Обновить
         /// </summary>
-        public Task Update(Tour tour, CancellationToken token)
+        public async Task Update(Tour tour, CancellationToken token)
         {
             var sw = Stopwatch.StartNew();
             try
             {
-                return storage.Update(tour, token);
+                await storage.Update(tour, token);
             }
             finally
             {
@@ -90,12 +90,12 @@ namespace Services
         /// <summary>
         /// Удалить
         /// </summary>
-        public Task Delete(Guid id, CancellationToken token)
+        public async Task Delete(Tour tour, CancellationToken token)
         {
             var sw = Stopwatch.StartNew();
             try
             {
-                return storage.Delete(id, token);
+                await storage.Delete(tour, token);
             }
             finally
             {
@@ -107,12 +107,12 @@ namespace Services
         /// <summary>
         /// Получить статистику
         /// </summary>
-        public Task<TourStatistics> GetStatistics(CancellationToken token)
+        public async Task<TourStatistics> GetStatistics(CancellationToken token)
         {
             var sw = Stopwatch.StartNew();
             try
             {
-                return storage.GetStatistics(token);
+                return await storage.GetStatistics(token);
             }
             finally
             {

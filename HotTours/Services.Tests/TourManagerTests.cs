@@ -50,10 +50,10 @@ namespace Services.Tests
             var tour = TestEntityProvider.Shared.Create<Tour>();
 
             // Act
-            await tourManager.Delete(tour.Id, CancellationToken.None);
+            await tourManager.Delete(tour, CancellationToken.None);
 
             // Assert
-            storageMock.Verify(mock => mock.Delete(tour.Id, CancellationToken.None), Times.Once());
+            storageMock.Verify(mock => mock.Delete(tour, CancellationToken.None), Times.Once());
             storageMock.VerifyNoOtherCalls();
         }
 

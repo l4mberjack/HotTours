@@ -51,12 +51,12 @@ namespace Repository
             return Task.CompletedTask;
         }
 
-        Task IStorage.Delete(Guid id, CancellationToken token)
+        Task IStorage.Delete(Tour tour, CancellationToken token)
         {
-            var tour = tours.FirstOrDefault(x => x.Id == id);
-            if (tour != null)
+            var record = tours.FirstOrDefault(x => x.Id == tour.Id);
+            if (record != null)
             {
-                tours.Remove(tour);
+                tours.Remove(record);
             }
             return Task.CompletedTask;
         }

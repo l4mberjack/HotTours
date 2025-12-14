@@ -1,4 +1,5 @@
-﻿using HotToursRegister.Forms;
+﻿using HotTourRegister.Context;
+using HotToursRegister.Forms;
 using Microsoft.Extensions.Logging;
 using Repository;
 using Serilog;
@@ -31,7 +32,8 @@ namespace HotToursRegister
             {
                 builder.AddSerilog(loggerConf);
             });
-            Application.Run(new MainForm(new TourManager(new InMemoryStorage(), loggerFactory)));
+            ApplicationConfiguration.Initialize();
+            Application.Run(new MainForm(new TourManager(new TourRepository(new TourContext()), loggerFactory)));
         }
     }
 }

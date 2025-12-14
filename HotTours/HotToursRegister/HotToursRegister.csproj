@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\HotTourRegister.Context\HotTourRegister.Context.csproj" />
       <ProjectReference Include="..\Repository.Contracts\Repository.Contracts.csproj" />
       <ProjectReference Include="..\Repository\Repository.csproj" />
       <ProjectReference Include="..\Services\Services.csproj" />
