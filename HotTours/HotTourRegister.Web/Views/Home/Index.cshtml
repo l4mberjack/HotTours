@@ -1,0 +1,56 @@
+﻿@using Entities
+@model MainModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="mb-4">Список туров</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Направление</th>
+        <th scope="col">Дата</th>
+        <th scope="col">Количество ночей</th>
+        <th scope="col">Количество туристов</th>
+        <th scope="col">Цена за отдыхающего</th>
+        <th scope="col">Доплата</th>
+        <th scope="col">Наличие Wi-Fi</th>
+        <th scope="col">Общая стоимость тура</th>
+        <th scope="col">Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var tour in Model.Tours)
+    {
+        <tr>
+            <th hidden="hidden">@tour.Id</th>
+            <td>@tour.Direction</td>
+            <td>@tour.DepartureDate.ToString("dd.MM.yyyy")</td>
+            <td>@tour.NightsCount</td>
+            <td>@tour.TouristCount</td>
+            <td>@tour.PricePerPerson</td>
+            <td>@tour.ExtraCharges</td>
+            <td>@tour.HasWifi</td>
+            <td>@(tour.TouristCount * tour.PricePerPerson + tour.ExtraCharges)</td>
+            <td>
+                <div style="display: flex; gap: 10px;">
+                    <form asp-controller="Home" asp-action="Delete" asp-route-tourId="@tour.Id" method="post">
+                        <button style="margin-right: 30px" class="btn btn-danger btn-sm">
+                            Удалить
+                        </button>
+                    </form>
+                    <a asp-controller="Home" asp-action="EditTourPage" asp-route-tourId="@tour.Id" method="get" class="btn btn-warning btn-sm">
+                        Изменить
+                    </a>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h3 class="mb-3">Количество туров: @Model.Statistics.TourCount</h3>
+<h3 class="mb-3">Количество туров с доплатами: @Model.Statistics.TourCountCharge</h3>
+<h3 class="mb-3">Общая сумма доплат: @Model.Statistics.TourSumCharge</h3>
+<h3 class="mb-3">Общая стоимость всех туров: @Model.Statistics.TotalPriceAllTours</h3>

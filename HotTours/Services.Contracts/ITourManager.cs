@@ -16,7 +16,7 @@ namespace Services.Contracts
         /// <summary>
         /// Удаление тура
         /// </summary>
-        Task Delete(Tour tour, CancellationToken token);
+        Task Delete(Guid tourId, CancellationToken token);
 
         /// <summary>
         /// Получение всех туров

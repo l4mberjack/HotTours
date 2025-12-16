@@ -1,5 +1,4 @@
 ﻿using Entities;
-using Repository.Contracts;
 using Services.Contracts;
 
 namespace HotToursRegister.Forms
@@ -94,18 +93,18 @@ namespace HotToursRegister.Forms
             var tour = (Tour)mainGrid.SelectedRows[0].DataBoundItem;
             if (MessageBox.Show($"Удалить '{tour.Direction}'?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                await tourManager.Delete(tour, CancellationToken.None);
+                await tourManager.Delete(tour.Id, CancellationToken.None);
                 await OnUpdate();
             }
         }
 
         private async void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var AddOrEditForm = new EditOrAddForm();
+            var addOrEditForm = new EditOrAddForm();
 
-            if (AddOrEditForm.ShowDialog(this) == DialogResult.OK)
+            if (addOrEditForm.ShowDialog(this) == DialogResult.OK)
             {
-                await tourManager.Add(AddOrEditForm.CurrentTour, CancellationToken.None);
+                await tourManager.Add(addOrEditForm.CurrentTour, CancellationToken.None);
                 await OnUpdate();
             }
         }

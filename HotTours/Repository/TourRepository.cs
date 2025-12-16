@@ -22,7 +22,7 @@ namespace Repository
         }
         public async Task<ICollection<Tour>> GetAll(CancellationToken token)
         {
-            return await context.Set<Tour>().ToListAsync(token);
+            return await context.Set<Tour>().AsNoTracking().ToListAsync(token);
         }
         public async Task<Tour?> GetById(Guid id, CancellationToken token)
         {
