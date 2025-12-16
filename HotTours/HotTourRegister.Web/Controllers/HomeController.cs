@@ -45,10 +45,10 @@ public class HomeController : Controller
     }
 
     /// <summary>
-    /// Получить станицу обновления туров
+    /// Получить страницу обновления туров
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> EditStudentPage(Guid tourId, CancellationToken cancellationToken)
+    public async Task<IActionResult> EditTourPage(Guid tourId, CancellationToken cancellationToken)
     {
         var student = await tourManager.GetById(tourId, cancellationToken);
         if (student is null)
