@@ -90,12 +90,13 @@ namespace Services
         /// <summary>
         /// Удалить
         /// </summary>
-        public async Task Delete(Tour tour, CancellationToken token)
+        public async Task Delete(Guid tourId, CancellationToken token)
         {
             var sw = Stopwatch.StartNew();
             try
             {
-                await storage.Delete(tour, token);
+                var tr = await GetById(tourId, token);
+                await storage.Delete(tr!, token);
             }
             finally
             {

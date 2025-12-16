@@ -1,0 +1,70 @@
+﻿@using Entities
+@using HotTourRegister.Web.Controllers
+@model Tour
+
+@{
+    ViewData["Title"] = "Добавить тур";
+    var pageType = Model?.Id is null ? nameof(HomeController.Create) : nameof(HomeController.Update);
+}
+
+@if (Model?.Id is null)
+{
+    <h2 class="mb-3">Добавить тур</h2>
+}
+else
+{
+    <h2 class="mb-3">Обновить тур</h2>
+}
+
+<form asp-action="@pageType" method="post" class="w-50">
+    <input asp-for="Id" class="form-control" hidden />
+
+    <div class="mb-3">
+        <label asp-for="Direction" class="form-label"></label>
+        <select asp-for="Direction"
+                asp-items="Html.GetEnumSelectList<Direction>()"
+                class="form-select">
+        </select>
+        <span asp-validation-for="Direction" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartureDate" class="form-label"></label>
+        <input asp-for="DepartureDate" type="date" class="form-control" />
+        <span asp-validation-for="DepartureDate" class="text-danger"></span>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <label asp-for="NightsCount" class="form-label"></label>
+            <input asp-for="NightsCount" type="number" class="form-control" />
+            <span asp-validation-for="NightsCount" class="text-danger"></span>
+        </div>
+
+        <div class="col">
+            <label asp-for="PricePerPerson" class="form-label"></label>
+            <input asp-for="PricePerPerson" type="number" class="form-control" />
+            <span asp-validation-for="PricePerPerson" class="text-danger"></span>
+        </div>
+
+        <div class="col">
+            <div class="form-check align-self-end mt-4">
+                <input asp-for="HasWifi" class="form-check-input" type="checkbox" />
+                <label asp-for="HasWifi" class="form-check-label"></label>
+            </div>
+        </div>
+
+        <div class="col">
+            <label asp-for="ExtraCharges" class="form-label"></label>
+            <input asp-for="ExtraCharges" type="number" class="form-control" />
+            <span asp-validation-for="ExtraCharges" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Отмена</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
